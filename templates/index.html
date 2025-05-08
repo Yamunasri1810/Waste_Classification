@@ -1,0 +1,193 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Waste Classification</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f8;
+    padding: 20px;
+    text-align: center;
+}
+
+.container {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 600px;
+    margin: auto;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+input[type="file"] {
+    margin: 10px 0;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 20px;
+}
+
+.result {
+    margin-top: 30px;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Waste Classification App</h1>
+        <p>Upload an image of waste to classify it as Recyclable or Organic.</p>
+        <form method="POST" enctype="multipart/form-data">
+            <input type="file" name="image" accept="image/*" required>
+            <button type="submit">Classify</button>
+        </form>
+
+        {% if image_data %}
+        <div class="result">
+            <h3>Uploaded Image:</h3>
+            <img src="data:image/jpeg;base64,{{ image_data }}" alt="Uploaded Image">
+            <h3>Prediction: {{ prediction }}</h3>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html> -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Smart Waste Classification</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        /* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #f0f4f8, #d9e4f5);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+/* App Container */
+.app-container {
+    background-color: white;
+    width: 100%;
+    max-width: 700px;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Header */
+.header h1 {
+    color: #2e7d32;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.header p {
+    color: #555;
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+}
+
+/* Upload Form */
+.upload-form input[type="file"] {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 2px dashed #90caf9;
+    background-color: #e3f2fd;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 400px;
+}
+
+.upload-form button {
+    margin-top: 15px;
+    padding: 12px 30px;
+    background-color: #43a047;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.upload-form button:hover {
+    background-color: #388e3c;
+}
+
+/* Results */
+.results-section {
+    margin-top: 30px;
+}
+
+.results-section h2 {
+    font-size: 1.4rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.results-section img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    border: 3px solid #ccc;
+    margin-bottom: 20px;
+}
+
+.prediction span {
+    color: #1b5e20;
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <div class="header">
+            <h1>♻️ Smart Waste Classifier</h1>
+            <p>AI-powered image classification for sustainable waste management</p>
+        </div>
+
+        <form class="upload-form" method="POST" enctype="multipart/form-data">
+            <input type="file" name="image" accept="image/*" required>
+            <button type="submit">🔍 Classify Waste</button>
+        </form>
+
+        {% if image_data %}
+        <div class="results-section">
+            <h2>🖼️ Uploaded Image:</h2>
+            <img src="data:image/jpeg;base64,{{ image_data }}" alt="Uploaded Image">
+            <h2 class="prediction">🧠 Prediction: <span>{{ prediction }}</span></h2>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
